@@ -1,9 +1,9 @@
 import React from "react";
-import Link from "next/link";
+
 const page = () => {
     return (
         <div>
-            <Link href="/home">Home</Link>
+            <h1>This is registr page</h1>
         </div>
     );
 };

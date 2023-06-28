@@ -1,9 +1,9 @@
 import React from "react";
-import Link from "next/link";
+
 const page = () => {
     return (
         <div>
-            <Link href="/home">Home</Link>
+            <h1>Welcome to Timeline.</h1>
         </div>
     );
 };
