@@ -1,11 +1,12 @@
-import React from "react";
+import Link from "next/link";
 
-const page = () => {
+const Login = () => {
     return (
         <div>
-            <h1>Welcome to Timeline.</h1>
+            <h1>Login Page</h1>
+            <Link href="/home">Homepage</Link>
         </div>
     );
 };
 
-export default page;
+export default Login;

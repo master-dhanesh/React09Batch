@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-const Home = () => {
+const Timeline = () => {
     return (
         <div>
-            <h1>Homepage</h1>
+            <h1>Timeline</h1>
         </div>
     );
 };
 
-export default Home;
+export default Timeline;

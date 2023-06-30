@@ -1,11 +1,12 @@
-import React from "react";
+import Link from "next/link";
 
-const page = () => {
+const Register = () => {
     return (
         <div>
-            <h1>This is registr page</h1>
+            <h1>Login Page</h1>
+            <Link href="/home">Homepage</Link>
         </div>
     );
 };
 
-export default page;
+export default Register;
