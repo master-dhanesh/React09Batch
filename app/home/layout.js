@@ -1,18 +1,11 @@
 "use client";
-import Link from "next/link";
+import Nav from "@/components/Nav";
 
 const Authenticate = (props) => {
     const { children } = props;
     return (
         <div>
-            <ul>
-                <li>
-                    <Link href="/home/timeline">Timeline</Link>
-                </li>
-                <li>
-                    <Link href="/home/posts">Posts</Link>
-                </li>
-            </ul>
+            <Nav />
             {children}
         </div>
     );
