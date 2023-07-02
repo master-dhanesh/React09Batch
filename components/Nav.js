@@ -4,10 +4,13 @@ const Nav = () => {
     return (
         <ul>
             <li>
-                <Link href="/home/timeline">Timeline</Link>
+                <Link href="/">Home </Link>
             </li>
             <li>
-                <Link href="/home/posts">Posts</Link>
+                <Link href="/home">Homepage </Link>
+            </li>
+            <li>
+                <Link href="/about">About </Link>
             </li>
         </ul>
     );
