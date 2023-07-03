@@ -1,4 +1,3 @@
-import Nav from "@/components/Nav";
 import "./globals.css";
 
 export const metadata = {
@@ -10,7 +9,10 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body suppressHydrationWarning>
-                <Nav />
+                <h1 className="resp">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Fugit, eius.
+                </h1>
                 {children}
             </body>
         </html>

@@ -1,47 +1,24 @@
-"use client";
-import { useRef, useState } from "react";
+import Home from "@/components/Home";
 
 const page = () => {
-    const firstRef = useRef(null);
-    const [first, setFirst] = useState("");
-    const [last, setLast] = useState("");
-
-    const ChangeHandler = (e) => {
-        const f = firstRef.current;
-        if (f.value.length < 4) {
-            f.style.outline = "1px solid red";
-        } else {
-            f.style.outline = "none";
-        }
-        setFirst(e.target.value);
+    const style = {
+        fontSize: "18px",
+        color: "royalblue",
+        fontFamily: "montserrat",
     };
 
-    const SubmitHandler = (e) => {
-        e.preventDefault();
-        console.log({ first, last });
-    };
     return (
-        <div>
-            <h1>Landing Page</h1>
+        <div style={{ height: "100%" }}>
+            <h1 style={{ fontSize: "50px", color: "blue" }}>
+                Lorem ipsum dolor sit amet.
+            </h1>
 
-            <form onSubmit={SubmitHandler}>
-                <input
-                    ref={firstRef}
-                    name="first"
-                    onChange={ChangeHandler}
-                    value={first}
-                    type="text"
-                    placeholder="first name"
-                />
-                <input
-                    name="last"
-                    onChange={(e) => setLast(e.target.value)}
-                    value={last}
-                    type="text"
-                    placeholder="last name"
-                />
-                <button>Submit</button>
-            </form>
+            <p style={style}>Lorem ipsum dolor sit amet.</p>
+
+            <h2>Lorem ipsum dolor sit.</h2>
+
+            <h3 className="sameer">Lorem ipsum dolor sit amet.</h3>
+            <Home />
         </div>
     );
 };
