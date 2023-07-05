@@ -8,13 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body suppressHydrationWarning>
-                <h1 className="resp">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Fugit, eius.
-                </h1>
-                {children}
-            </body>
+            <body suppressHydrationWarning>{children}</body>
         </html>
     );
 }
