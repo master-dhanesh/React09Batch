@@ -1,15 +1,18 @@
 "use client";
-import axios from "axios";
-const page = () => {
-    const searchImages = () => {};
+import { useContext } from "react";
+import { CentralizedData } from "./context";
 
-    return <div>page</div>;
+const page = () => {
+    const [data, setData] = useContext(CentralizedData);
+    return (
+        <div>
+            <h1>Page.js Parent</h1>
+            <p>{data}</p>
+            <button onClick={() => setData("change Data")}>
+                Change Central Data
+            </button>
+        </div>
+    );
 };
 
 export default page;
-
-// List of Images
-// https://api.unsplash.com/photos?client_id=ID&page=1
-
-// Seach Images
-// https://api.unsplash.com/search/photos?client_id=ID&page=1&query=office
