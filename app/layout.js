@@ -1,4 +1,4 @@
-import CentralData from "./context";
+import DataStore from "./context";
 import "./globals.css";
 
 export const metadata = {
@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body suppressHydrationWarning>
-                <CentralData>{children}</CentralData>
+                <DataStore>{children}</DataStore>
             </body>
         </html>
     );

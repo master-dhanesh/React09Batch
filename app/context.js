@@ -1,17 +1,15 @@
 "use client";
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
-export const CentralizedData = createContext(null); //context init.
+export const DataContext = createContext(null);
 
-const CentralData = (props) => {
-    const [data, setData] = useState(
-        "This is Centralized Information and should be accessed by all components."
-    );
+const DataStore = (props) => {
+    const [data, setData] = useState([]);
     return (
-        <CentralizedData.Provider value={[data, setData]}>
+        <DataContext.Provider value={[data, setData]}>
             {props.children}
-        </CentralizedData.Provider>
+        </DataContext.Provider>
     );
 };
 
-export default CentralData;
+export default DataStore;
