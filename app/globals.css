@@ -9,3 +9,27 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.list {
+    margin-top: 1vmax;
+    width: 90vw;
+    margin: auto;
+}
+
+.list > ul {
+    margin-top: 2vmax;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list > ul > li {
+    margin-right: 1vmax;
+    margin-bottom: 1vmax;
+}
+
+.list > ul > li > img {
+    width: 10vmax;
+    height: 8vmax;
+    object-fit: cover;
+}
