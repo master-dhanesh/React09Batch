@@ -1,5 +1,5 @@
-import DataStore from "./context";
 import "./globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const metadata = {
     title: "Create Next App",
@@ -9,9 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body suppressHydrationWarning>
-                <DataStore>{children}</DataStore>
-            </body>
+            <body suppressHydrationWarning>{children}</body>
         </html>
     );
 }
+
+//  "https://api.unsplash.com/photos?client_id=Cjg971k-TOJCHGcnCsd4G-Fnk92KMy2Z03E1eNolX58&page=1";
+//  `https://api.unsplash.com/search/photos?client_id=Cjg971k-TOJCHGcnCsd4G-Fnk92KMy2Z03E1eNolX58&page=1&query=${slug}`

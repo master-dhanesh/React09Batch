@@ -1,26 +1,22 @@
 "use client";
-
-import axios from "axios";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import { DataContext } from "./context";
+import Show from "@/components/Show";
+import { useState } from "react";
 
 const page = () => {
-    const router = useRouter();
-    const [Data, setData] = useContext(DataContext);
+    const [show, setShow] = useState(false);
 
-    const GetTrending = async () => {
-        const { data } = await axios.get(
-            "https://api.unsplash.com/photos?client_id=Cjg971k-TOJCHGcnCsd4G-Fnk92KMy2Z03E1eNolX58&page=1"
-        );
-        setData(data);
-        router.push("/list");
+    const ShowHandler = () => {
+        setShow(!show);
     };
+
     return (
         <div>
-            <button onClick={GetTrending}>Trending Images</button>
-            <Link href="/search">Search Images</Link>
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <button onClick={ShowHandler} className="ms-3 btn btn-primary">
+                {show ? "Hide" : "Show"}
+            </button>
+            <hr />
+            {show && <Show />}
         </div>
     );
 };
