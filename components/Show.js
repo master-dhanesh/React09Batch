@@ -1,26 +1,28 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Show = () => {
-    const [msg, setMsg] = useState("This is initial text of Show");
+    const [images, setImages] = useState([]);
 
-    const ChangeMsg = () => {
-        setMsg("Show component text updated!");
+    const GetImages = async () => {
+        try {
+            const { data } = await axios.get(
+                `https://picsum.photos/v2/list?page=2&limit=10`
+            );
+            setImages(data);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     useEffect(() => {
-        console.log("Component Created!");
-
-        return () => {
-            console.log("Component Destoryed!");
-        };
+        GetImages();
     }, []);
 
     return (
-        <div>
-            <h1>{msg}</h1>
-            <button onClick={ChangeMsg} className="ms-3 btn btn-primary">
-                Change Text
-            </button>
+        <div className="container mt-5 bg-light p-5">
+            <hr />
+            {JSON.stringify(images)}
         </div>
     );
 };
