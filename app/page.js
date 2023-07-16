@@ -1,22 +1,42 @@
 "use client";
-import Show from "@/components/Show";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const page = () => {
-    const [show, setShow] = useState(false);
+    const [images, setImages] = useState([]);
 
-    const ShowHandler = () => {
-        setShow(!show);
+    const GetImages = async () => {
+        try {
+            const { data } = await axios.get(
+                `https://picsum.photos/v2/list?page=2&limit=10`
+            );
+            setImages(data);
+        } catch (error) {
+            console.log(error);
+        }
     };
+    useEffect(() => {
+        GetImages();
+    }, []);
 
     return (
-        <div>
-            <h1>Lorem ipsum dolor sit amet.</h1>
-            <button onClick={ShowHandler} className="ms-3 btn btn-primary">
-                {show ? "Hide" : "Show"}
-            </button>
-            <hr />
-            {show && <Show />}
+        <div className="container mt-5 p-5 bg-light">
+            <ul>
+                {images
+                    ? images.map((image, i) => (
+                          <li key={image.id}>
+                              <img
+                                  height={100}
+                                  src={image.download_url}
+                                  alt=""
+                              />
+                              <a href={`/details/${image.id}`}>
+                                  {image.author}
+                              </a>
+                          </li>
+                      ))
+                    : "loading..."}
+            </ul>
         </div>
     );
 };
