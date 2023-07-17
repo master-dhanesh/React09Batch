@@ -1,7 +1,9 @@
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+
 const page = () => {
     const [page, setPage] = useState(1);
     const [images, setImages] = useState([]);
@@ -37,9 +39,9 @@ const page = () => {
                                   alt=""
                               />{" "}
                               <br />
-                              <a href={`/details/${image.id}`}>
+                              <Link href={`/details/${image.id}`}>
                                   {image.author}
-                              </a>
+                              </Link>
                           </li>
                       ))
                     : "loading..."}
