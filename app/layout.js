@@ -16,3 +16,5 @@ export default function RootLayout({ children }) {
 
 //  "https://api.unsplash.com/photos?client_id=Cjg971k-TOJCHGcnCsd4G-Fnk92KMy2Z03E1eNolX58&page=1";
 //  `https://api.unsplash.com/search/photos?client_id=Cjg971k-TOJCHGcnCsd4G-Fnk92KMy2Z03E1eNolX58&page=1&query=${slug}`
+
+//  `https://api.unsplash.com/photos/IMAGE_ID?client_id=Cjg971k-TOJCHGcnCsd4G-Fnk92KMy2Z03E1eNolX58`
