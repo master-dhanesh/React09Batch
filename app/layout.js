@@ -1,5 +1,9 @@
+"use client";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
 
 export const metadata = {
     title: "Create Next App",
@@ -9,7 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body suppressHydrationWarning>{children}</body>
+            <body suppressHydrationWarning>
+                <Provider store={store}>{children}</Provider>
+            </body>
         </html>
     );
 }

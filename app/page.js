@@ -1,17 +1,31 @@
 "use client";
-import React from "react";
-import { store } from "@/store/store";
-import { Provider } from "react-redux";
-import Show from "@/components/Show";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "@/store/reducers/counterReducer";
+
 const page = () => {
+    const { value } = useSelector((state) => state.counterReducer);
+    const dispatch = useDispatch();
+    const IncrementHandler = () => {
+        dispatch(increment(1));
+    };
+
+    const DecrementHandler = () => {
+        dispatch(decrement(1));
+    };
     return (
-        <Provider store={store}>
-            <div className="container mt-5 p-5 bg-light">
-                <h1>Redux Toolkit</h1>
-                <hr />
-                <Show />
-            </div>
-        </Provider>
+        <div className="container mt-5 p-5 bg-light">
+            <h1>Homepage</h1>
+            <h2>{value}</h2>
+            <button
+                className=" me-3 btn btn-success"
+                onClick={IncrementHandler}
+            >
+                Increment By 1
+            </button>
+            <button className="btn btn-danger" onClick={DecrementHandler}>
+                Decrement By 1
+            </button>
+        </div>
     );
 };
 
