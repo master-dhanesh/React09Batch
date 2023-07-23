@@ -1,7 +1,6 @@
 "use client";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "@/store/reducers/counterReducer";
-
+import { increment, decrement, asyncIncrementBy5 } from "@/store/actions/index";
 const page = () => {
     const { value } = useSelector((state) => state.counterReducer);
     const dispatch = useDispatch();
@@ -11,6 +10,10 @@ const page = () => {
 
     const DecrementHandler = () => {
         dispatch(decrement(1));
+    };
+
+    const IncrementBy5Handler = () => {
+        dispatch(asyncIncrementBy5());
     };
     return (
         <div className="container mt-5 p-5 bg-light">
@@ -22,8 +25,12 @@ const page = () => {
             >
                 Increment By 1
             </button>
-            <button className="btn btn-danger" onClick={DecrementHandler}>
+            <button className="btn btn-danger me-3" onClick={DecrementHandler}>
                 Decrement By 1
+            </button>
+
+            <button className="btn btn-warning" onClick={IncrementBy5Handler}>
+                Increment By 5
             </button>
         </div>
     );
