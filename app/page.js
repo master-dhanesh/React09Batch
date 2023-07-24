@@ -1,37 +1,36 @@
 "use client";
-import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement, asyncIncrementBy5 } from "@/store/actions/index";
-const page = () => {
-    const { value } = useSelector((state) => state.counterReducer);
-    const dispatch = useDispatch();
-    const IncrementHandler = () => {
-        dispatch(increment(1));
-    };
+import React, { use, useState } from "react";
+import axios from "axios";
 
-    const DecrementHandler = () => {
-        dispatch(decrement(1));
-    };
+const getData = async () => {
+    try {
+        const { data } = await axios.get(
+            "https://jsonplaceholder.typicode.com/users"
+        );
+        return data;
+    } catch (error) {
+        return error;
+    }
+};
 
-    const IncrementBy5Handler = () => {
-        dispatch(asyncIncrementBy5());
-    };
+const page = (props) => {
+    const [users, setusers] = useState(use(getData()) || []);
+    // const getData = async () => {
+    //     try {
+    //         const { data } = await axios.get(
+    //             "https://jsonplaceholder.typicode.com/users"
+    //         );
+    //         setusers(data);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+
     return (
-        <div className="container mt-5 p-5 bg-light">
-            <h1>Homepage</h1>
-            <h2>{value}</h2>
-            <button
-                className=" me-3 btn btn-success"
-                onClick={IncrementHandler}
-            >
-                Increment By 1
-            </button>
-            <button className="btn btn-danger me-3" onClick={DecrementHandler}>
-                Decrement By 1
-            </button>
-
-            <button className="btn btn-warning" onClick={IncrementBy5Handler}>
-                Increment By 5
-            </button>
+        <div>
+            {users.map((user) => {
+                return <p key={user.id}>{user.name}</p>;
+            })}
         </div>
     );
 };
