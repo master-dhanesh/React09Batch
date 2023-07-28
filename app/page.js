@@ -1,36 +1,32 @@
 "use client";
-import React, { use, useState } from "react";
-import axios from "axios";
+import { asyncGetPopularMovies } from "@/store/Actions/tmdbActions";
+import Link from "next/link";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+const page = () => {
+    const { data } = useSelector((state) => state.tmdbReducer);
+    const dispatch = useDispatch();
+    console.log(data);
 
-const getData = async () => {
-    try {
-        const { data } = await axios.get(
-            "https://jsonplaceholder.typicode.com/users"
-        );
-        return data;
-    } catch (error) {
-        return error;
-    }
-};
-
-const page = (props) => {
-    const [users, setusers] = useState(use(getData()) || []);
-    // const getData = async () => {
-    //     try {
-    //         const { data } = await axios.get(
-    //             "https://jsonplaceholder.typicode.com/users"
-    //         );
-    //         setusers(data);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-
+    useEffect(() => {
+        if (data.length === 0) dispatch(asyncGetPopularMovies());
+    }, []);
     return (
         <div>
-            {users.map((user) => {
-                return <p key={user.id}>{user.name}</p>;
-            })}
+            {data &&
+                data.map((d) => {
+                    return (
+                        <div key={d.id}>
+                            <img
+                                height={200}
+                                src={`https://image.tmdb.org/t/p/w500${d.poster_path}`}
+                                alt=""
+                            />
+                            <h3>{d.title}</h3>
+                            <Link href={`/details/${d.id}`}>Details</Link>
+                        </div>
+                    );
+                })}
         </div>
     );
 };
