@@ -32,7 +32,10 @@ export default function RootLayout({ children }) {
 // https://www.themoviedb.org/settings/api?api_key=YOUR_API_KEY
 
 // API LINKS TO USE
-// https://developers.themoviedb.org/3/movies/get-movie-details?api_key=YOUR_API_KEY
+// https://api.themoviedb.org/3/movie/{movie_id}?api_key=YOUR_API_KEY
 
 // image paths
 // https://image.tmdb.org/t/p/w500/rr7E0NoGKxvbkb89eR1GwfoYjpA.jpg?api_key=YOUR_API_KEY
+
+// search
+// https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=YOUR_API_KEY

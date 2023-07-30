@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tmdbReducer from "./Reducers/tmdbReducer";
+import movieReducer from "@/store/Reducers/movieReducer";
 export const store = configureStore({
     reducer: {
-        tmdbReducer,
+        movieReducer,
     },
 });

@@ -1,26 +1,26 @@
 "use client";
-import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-const page = () => {
-    const params = useParams();
+import { useEffect } from "react";
+import { useState } from "react";
+
+const page = ({ params }) => {
     const [detail, setdetail] = useState(null);
-    console.log(params);
-    const GetDetails = async () => {
+    const GetMovieDetails = async () => {
         try {
             const { data } = await axios.get(
                 `https://api.themoviedb.org/3/movie/${params.id}?api_key=223667d1239871fc4b6eeef8d0d6def8`
             );
+            setdetail(data);
             console.log(data);
         } catch (error) {
             console.log(error);
         }
     };
-    useEffect(() => {
-        if (detail === null) GetDetails();
-    }, []);
 
-    return <div>page</div>;
+    useEffect(() => {
+        if (!detail) GetMovieDetails();
+    }, []);
+    return <div>{JSON.stringify(detail)}</div>;
 };
 
 export default page;
