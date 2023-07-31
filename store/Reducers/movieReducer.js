@@ -2,21 +2,29 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     movies: [],
-    page: 0,
+    page: 1,
+    errors: [],
 };
 
 export const movieReducer = createSlice({
     name: "tmdb",
     initialState,
     reducers: {
-        addmovies: (state, actions) => {
-            state.movies = actions.payload;
+        addmovies: (state, action) => {
+            state.movies = action.payload;
         },
-        updatepage: (state, actions) => {
-            state.page = actions.payload;
+        adderrors: (state, action) => {
+            state.errors.push(action.payload);
+        },
+        removeerrors: (state, action) => {
+            state.errors = [];
+        },
+        changepage: (state, action) => {
+            state.page += action.payload;
         },
     },
 });
 
 export default movieReducer.reducer;
-export const { addmovies, updatepage } = movieReducer.actions;
+export const { addmovies, updatepage, adderrors, changepage, removeerrors } =
+    movieReducer.actions;
