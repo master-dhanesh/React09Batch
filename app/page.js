@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -38,7 +39,10 @@ const page = () => {
                 >
                     {posts.map((p, idx) => (
                         <li className="mb-5 alert alert-dark " key={idx}>
-                            {p.title}
+                            {p.title}{" "}
+                            <Link className="ms-5" href={`/${p.id}`}>
+                                Explore More
+                            </Link>
                         </li>
                     ))}
                 </InfiniteScroll>
