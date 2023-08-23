@@ -1,54 +1,36 @@
 "use client";
 import axios from "axios";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
+import React from "react";
+import { useEffect } from "react";
 
 const page = () => {
-    const [posts, setposts] = useState([]);
-    const [hasMore, setHasMore] = useState(true);
-    const getmoreposts = async () => {
+    const getData = async () => {
         try {
-            const { data } = await axios.get(
-                `https://jsonplaceholder.typicode.com/posts?_limit=10&_start=${posts.length}`
-            );
-            data.length === 0 ? setHasMore(false) : "";
-            setposts([...posts, ...data]);
-        } catch (err) {
-            console.log(err);
+            const { data } = await axios.get("/api");
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const postData = async () => {
+        try {
+            const { data } = await axios.post("/api", {
+                name: "Kuch Bhhi",
+                skill: "kuch nahiii",
+            });
+            console.log(data);
+        } catch (error) {
+            console.log(error);
         }
     };
 
     useEffect(() => {
-        if (posts.length === 0) getmoreposts();
+        postData();
+        getData();
     }, []);
-    return (
-        <div>
-            <h1>Posts</h1>
-            <ul className="list-group">
-                <InfiniteScroll
-                    dataLength={posts.length}
-                    next={getmoreposts}
-                    hasMore={hasMore}
-                    loader={<h1>Loading...</h1>}
-                    endMessage={
-                        <p style={{ textAlign: "center" }}>
-                            <b>Yay! You have seen it all</b>
-                        </p>
-                    }
-                >
-                    {posts.map((p, idx) => (
-                        <li className="mb-5 alert alert-dark " key={idx}>
-                            {p.title}{" "}
-                            <Link className="ms-5" href={`/${p.id}`}>
-                                Explore More
-                            </Link>
-                        </li>
-                    ))}
-                </InfiniteScroll>
-            </ul>
-        </div>
-    );
+
+    return <div>page</div>;
 };
 
 export default page;
